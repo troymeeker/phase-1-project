@@ -1,0 +1,45 @@
+
+body{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+width: 100%;
+margin:0px;
+padding:0px;
+}
+header{
+background-color: rgb(163, 163, 52);
+
+width: 100%;
+height: 350px;
+display: flex;
+justify-content: space-around;
+
+}
+#img-nav{
+ width: 100%;
+ display: flex;
+ flex-direction: row;
+}
+#initial-list{
+background-color: rgb(221, 155, 221);
+width: 100%;
+height:180px;
+
+}
+.beer-item{
+    height: 240px;
+    width: 335px;
+    margin:3px 8px;
+
+}
+#all-Breweries{
+    background-color: rgb(236, 192, 154);
+width: 100%;
+height: 750px;
+
+}
+#beer-image, #stickmen , #sunriver {
+    height:inherit ;
+    width: inherit;
+    background-size: cover;
+    
+}
