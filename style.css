@@ -20,7 +20,7 @@ justify-content: space-around;
  flex-direction: row;
 }
 #initial-list{
-background-color: rgb(221, 155, 221);
+background-color: rgb(133, 73, 63);
 width: 100%;
 height:180px;
 
@@ -34,7 +34,7 @@ height:180px;
 #all-Breweries{
     background-color: rgb(236, 192, 154);
 width: 100%;
-height: 750px;
+height: 900px;
 
 }
 #beer-image, #stickmen , #sunriver {
@@ -42,4 +42,9 @@ height: 750px;
     width: inherit;
     background-size: cover;
     
+}
+.card{
+    height: 20px;
+    width: 26px;
+border: rgb(34, 34, 129);
 }
