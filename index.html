@@ -31,13 +31,11 @@
   <main>
     <!-- list -->
     <div id="initial-list">
-        <h4>Lets find the breweries in your local area</h4>
-        <h4>Append Data here</h4> 
-       <form>
+        <h3 class="visiting">Visiting Oregon? Lets find the breweries in your area!</h3>
+        <!-- <h4>Append Data here</h4>  -->
+       <form id="cityForm">
+           <!-- <input type="text" placeholder="Search by City" id="citySearch"> -->
            <input type="text" placeholder="Search by City" id="citySearch">
-           <input type="text" placeholder="Search by State" id="stateSearch">
-           
-
            <input type="submit" id="submit">
 
        </form>
@@ -46,14 +44,18 @@
   </main>
 
   <footer>
-    <!-- favorited list -->
    
-    <div id="all-Breweries">
-      
-    </div>
-    
+   
+    <div id="buttons">  
+      <h2 id='brewList'>Breweries in Oregon</h2>
+      <button id="previous"><<</button>
+      <button id="next">>></button><br>
+    </div>  
+  <section id="all-Breweries">
 
+  </section>
   </footer>
+
   <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
