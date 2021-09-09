@@ -4,7 +4,6 @@ const baseUrl = `https://api.openbrewerydb.org/breweries?by_state=oregon&${pageN
 const nextPage = document.querySelector('#next')
 const previousPage = document.querySelector('#previous')
 const collection = document.querySelector('#all-Breweries')
-//  collection.innerHTML = `Page ${pageNum}` 
 
 // const liker = document.createElement('button')
 // liker.innerHTML = ('')
@@ -38,7 +37,7 @@ const collection = document.querySelector('#all-Breweries')
       fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
       .then(resp => resp.json())
       .then(breweries => {
-        console.log(breweries)
+        // console.log(breweries)
         if(breweries.length === 0){
           pageNum -= 1
           window.alert('You are on the Final page')
@@ -67,21 +66,18 @@ const collection = document.querySelector('#all-Breweries')
      }) 
      //submit -filters by city      
      let submit = document.querySelector('#cityForm')
-     submit.addEventListener('submit', ()=>{
-         fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
-        .then(resp=>resp.json())
-        .then((breweries)=>{
-            collection.innerHTML = `Page ${pageNum}` 
-            breweries.forEach((element) => {
-              const filteredBrews = breweries.filter((element)=>{
-                     return element.city === element.city;
-              })      
-      })
-        })
+     submit.addEventListener('submit', (e) => {
+    //      fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
+    //     .then(resp=>resp.json())
+    //     .then((breweries)=>{
+    //         collection.innerHTML = `Page ${pageNum}` 
+    //         breweries.forEach((element) => {
+    //           const filteredBrews = collection.filter((element)=>{
+    //                 //  return element.city === element.city;                
+    //           })      
+    //   })
+    //     })
+            e.preventDefault()
+            
+            })
      })
-        
-
-  
-      })
-  
-

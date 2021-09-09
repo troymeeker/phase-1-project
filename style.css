@@ -44,7 +44,7 @@ header{
 #all-Breweries{
     background-color: rgb(236, 192, 154);
     width: 100%;
-    height: 940px;
+    height: 920px;
 }
 #brewList{
     position: relative;
@@ -59,7 +59,7 @@ header{
     background-size: cover;
 }   
 .card{
-    height: 40px;
+    height: 38px;
     width: 100%;
     margin:0px 6px;
     display: flex;
