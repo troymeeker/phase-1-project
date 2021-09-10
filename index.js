@@ -1,16 +1,28 @@
-document.addEventListener('DOMContentLoaded', () => {
 let pageNum = 1
 const baseUrl = `https://api.openbrewerydb.org/breweries?by_state=oregon&${pageNum}`
 const nextPage = document.querySelector('#next')
 const previousPage = document.querySelector('#previous')
 const collection = document.querySelector('#all-Breweries')
+let searchedCity = document.getElementById('citySearch').value
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  getBrews() 
 // const liker = document.createElement('button')
 // liker.innerHTML = ('')
 // const unliker = document.createElement('button')
-// unliker.innerHTML = ('X')
+// unliker.innerHTML = ('X')  
+  
+  nextPage.addEventListener('click', handleNextPage)
+
+   previousPage.addEventListener('click', handlePreviousPage) 
+     //submit -filters by city      
+   let submit = document.querySelector('#cityForm')
+   submit.addEventListener('submit', handleSubmit)
+
+})
             
-   const getBrews = () => {
+    const getBrews = () => {
         fetch(baseUrl) 
         .then(resp => resp.json())
         .then((breweries) =>  {
@@ -18,8 +30,9 @@ const collection = document.querySelector('#all-Breweries')
             breweries.forEach((element) => {   
              collection.append(renderBrewery(element), document.createElement('hr'))
             })
+        })
         }
-     )} 
+    
      function renderBrewery (element){
     
         const breweryList = document.createElement('section')
@@ -29,14 +42,12 @@ const collection = document.querySelector('#all-Breweries')
          brewName.dataset.id = element.id
        return brewName
 
-        }    
-    getBrews() 
-  
-  nextPage.addEventListener('click', () => {
-      pageNum+=1
-      fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
-      .then(resp => resp.json())
-      .then(breweries => {
+     }  
+     const handleNextPage = (e) => {  
+       pageNum+=1
+       fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
+       .then(resp => resp.json())
+       .then(breweries => {
         // console.log(breweries)
         if(breweries.length === 0){
           pageNum -= 1
@@ -46,10 +57,11 @@ const collection = document.querySelector('#all-Breweries')
             collection.append(renderBrewery(element),document.createElement('hr'))
        })}            
     }) 
-   })
+   
+     }
 
-   previousPage.addEventListener('click', (e) => {
-       if(pageNum===1){
+     const handlePreviousPage = (e) => {
+         if(pageNum===1){
            window.alert('You are on the first page')
        }else{ 
           pageNum -= 1
@@ -58,26 +70,23 @@ const collection = document.querySelector('#all-Breweries')
            .then((breweries) => {
              collection.innerHTML = `Page ${pageNum}` 
               breweries.forEach((element) => {
-                collection.append(renderBrewery(element),document.createElement('hr'), )
-      })
+               collection.append(renderBrewery(element),document.createElement('hr'), )
+              })
            })
+        }
+     }
+
+     const handleSubmit = (e) => { 
+        e.preventDefault() 
+        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
+        .then(resp=>resp.json())
+        .then((breweries)=>{
+            collection.innerHTML = `Page ${pageNum}`
+            breweries.forEach((element) => {
+                const filteredBrews = breweries.filter((element) => {
+                   return element.city == searchedCity  
+                })
+             })    
+             })   
            
      }
-     }) 
-     //submit -filters by city      
-     let submit = document.querySelector('#cityForm')
-     submit.addEventListener('submit', (e) => {
-    //      fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
-    //     .then(resp=>resp.json())
-    //     .then((breweries)=>{
-    //         collection.innerHTML = `Page ${pageNum}` 
-    //         breweries.forEach((element) => {
-    //           const filteredBrews = collection.filter((element)=>{
-    //                 //  return element.city === element.city;                
-    //           })      
-    //   })
-    //     })
-            e.preventDefault()
-            
-            })
-     })
