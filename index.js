@@ -3,7 +3,7 @@ const baseUrl = `https://api.openbrewerydb.org/breweries?by_state=oregon&${pageN
 const nextPage = document.querySelector('#next')
 const previousPage = document.querySelector('#previous')
 const collection = document.querySelector('#all-Breweries')
-let searchedCity = document.getElementById('citySearch').value
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -78,15 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
      const handleSubmit = (e) => { 
         e.preventDefault() 
-        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}`)
+        let searchedCity = document.getElementById('citySearch').value
+        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&by_city=${searchedCity}`)
         .then(resp=>resp.json())
         .then((breweries)=>{
             collection.innerHTML = `Page ${pageNum}`
             breweries.forEach((element) => {
-                const filteredBrews = breweries.filter((element) => {
-                   return element.city == searchedCity  
-                })
+               if(element.city===searchedCity){
+                    console.log(element)
+                     collection.append(renderBrewery(element), document.createElement('hr'))
+               }
+              
              })    
+
              })   
            
      }
