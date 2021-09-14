@@ -4,18 +4,12 @@ const nextPage = document.querySelector('#next')
 const previousPage = document.querySelector('#previous')
 const collection = document.querySelector('#all-Breweries')
 const nextSearchPage = document.querySelector('#moreSearched')
-
+const getShowAll = document.querySelector('#toggleList')
 
 
 document.addEventListener('DOMContentLoaded', () => {
 
   getBrews() 
-
-  //*maybe add liked list*
-// const liker = document.createElement('button')
-// liker.innerHTML = ('')
-// const unliker = document.createElement('button')
-// unliker.innerHTML = ('X')  
   
   nextPage.addEventListener('click', handleNextPage)
 
@@ -27,8 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
    nextSearchPage.addEventListener('click', moreBySearchedCity)
 
    let searchedCity = document.getElementById('citySearch').value
-   console.log(searchedCity)
+   
    nextSearchPage.innerHTML = ` More Breweries in this city`
+
+  
    
 })
             
@@ -43,16 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         }
     
+
      function renderBrewery (element){
     
         const breweryList = document.createElement('section')
         breweryList.className = 'card'
         const brewName =  document.createElement('div')
         brewName.innerHTML = `${element.name}, ${element.city}`
-         brewName.dataset.id = element.id
-       return brewName
+        brewName.dataset.id = element.id
+        return brewName
 
      }  
+
+    
+
      const handleNextPage = (e) => {  
        pageNum+=1
        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}&per_page=50`)
@@ -99,17 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
             collection.innerHTML = `Page ${pageNum}`
             breweries.forEach((element) => {
                if(element.city===searchedCity){
-                    // console.log(element)
+                    
                      collection.append(renderBrewery(element), document.createElement('hr'))
                }
               
              })    
 
-             })   
-            }
+             })  
+             if(searchedCity === ''){
+                 window.alert('Please enter a valid city in Oregon')
+             }
+     }
 
-    // if(searchedCity > 50){
-        const moreBySearchedCity = (e) => {
+    const moreBySearchedCity = (e) => {
         e.preventDefault()
 
         let searchedCity = document.getElementById('citySearch').value
@@ -125,10 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
              })   
          }) 
         
-        }  
-    // }
-     
-     
-     
-           
-     
+    }  
