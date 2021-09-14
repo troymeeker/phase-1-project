@@ -7,9 +7,9 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <header>
+  
       <nav id="header">
-          <h1>Beer o Clock!</h1>
+          <h1 class="title">Beer o Clock!</h1>
           <nav id="img-nav">
               <div class="beer-item">
                 <img src="./images/stickmen.jpeg" alt="Stickmen beer on a patio" id="stickmen">
@@ -21,39 +21,33 @@
                 <img src="./images/sunriver.jpeg" alt="Sunriver Beer" id="sunriver">
               </div>
           
-            </nav>
-          
-          
-          
-      </nav>
-  </header>
+            </nav>     
+       </nav>
   
   <main>
-    <!-- list -->
-    <div id="initial-list">
-        <h3 class="visiting">Visiting Oregon? Lets find the breweries in your area!</h3>
-        <!-- <h4>Append Data here</h4>  -->
+      <div id="initial-list">
+        <h3 class="visiting">Visiting Oregon? Lets find some local breweries to try!</h3>
        <form id="cityForm">
            <!-- <input type="text" placeholder="Search by City" id="citySearch"> -->
            <input type="text" placeholder="Search by City" id="citySearch">
            <input type="submit" id="submit">
 
-       </form>
-    
+       </form>    
 </div>
   </main>
 
-  <footer>
-   
-   
-    <div id="buttons">  
+  <footer>  
+       <div id="buttons">  
       <h2 id='brewList'>Breweries in Oregon</h2>
       <button id="previous"><<</button>
-      <button id="next">>></button><br>
-    </div>  
-  <section id="all-Breweries">
+      
+      <button id="next">>></button><br><br>
 
-  </section>
+      <button id="moreSearched"></button>
+    </div>  
+   <section id="all-Breweries">
+
+   </section>
   </footer>
 
   <script type="text/javascript" src="index.js"></script>

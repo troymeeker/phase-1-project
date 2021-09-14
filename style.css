@@ -1,20 +1,13 @@
 
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100vw;
     height:100vh;
-    margin:2px;
+    margin:0px;
     padding:0px;
     background-color: rgb(131, 39, 2);
 }
-header{
-    background-color: rgb(163, 163, 52);
-  width: 100vw;
-    height: 370px;
-    display: flex;
-    justify-content: space-around;
 
-}
 #img-nav{
  width: 100vw;
  display: flex;
@@ -29,22 +22,37 @@ header{
     justify-content: center;
 
 }
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
 #submit, #citySearch{
     height:25px;
     position: relative;
     top:35%;
     right:300px;
+  
+  
 }
 .beer-item{
     height: 80%;
     width: 80%;
     margin:5px;
+    display: flex;
+    justify-content: space-evenly;
+
 
 }
 #all-Breweries{
     background-color: rgb(236, 192, 154);
     width: 100%;
-    height: 920px;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #brewList{
     position: relative;
@@ -68,6 +76,7 @@ header{
 }
 #buttons{
     background-color: cadetblue;
+    padding:5px;
 }
 #next, #previous{
     position: relative;
@@ -76,4 +85,9 @@ header{
 .visiting{
     position: relative;
     left:55px;
+}
+#moreSearched{
+    position: relative;
+    left:45%;
+   
 }
