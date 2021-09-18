@@ -5,6 +5,7 @@ const previousPage = document.querySelector('#previous')
 const collection = document.querySelector('#all-Breweries')
 const nextSearchPage = document.querySelector('#moreSearched')
 const getShowAll = document.querySelector('#toggleList')
+let submit = document.querySelector('#cityForm')
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   nextPage.addEventListener('click', handleNextPage)
 
    previousPage.addEventListener('click', handlePreviousPage) 
-     //submit -filters by city      
-   let submit = document.querySelector('#cityForm')
+         
+   
    submit.addEventListener('submit', handleSubmit)
   
    nextSearchPage.addEventListener('click', moreBySearchedCity)
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
    let searchedCity = document.getElementById('citySearch').value
    
    nextSearchPage.innerHTML = ` More Breweries in this city`
-
   
    
 })
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(resp => resp.json())
         .then((breweries) =>  {
             collection.innerHTML = `Page ${pageNum}` 
+           
             breweries.forEach((element) => {   
              collection.append(renderBrewery(element), document.createElement('hr'))
             })
         })
-        }
-    
+        }    
 
      function renderBrewery (element){
     
@@ -50,15 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return brewName
 
      }  
-
     
 
-     const handleNextPage = (e) => {  
+     const handleNextPage = () => {  
        pageNum+=1
        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}&per_page=50`)
        .then(resp => resp.json())
        .then(breweries => {
-        // console.log(breweries)
+        
         if(breweries.length === 0){
           pageNum -= 1
           window.alert('You are on the Final page')
@@ -71,10 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
    
      }
 
-     const handlePreviousPage = (e) => {
+     const handlePreviousPage = () => {
          if(pageNum===1){
            window.alert('You are on the first page')
-         
        }else{ 
           pageNum -= 1
            fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}&per_page=50`)
@@ -112,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
      }
 
     const moreBySearchedCity = (e) => {
-        e.preventDefault()
+        // e.preventDefault() only needed on forms, prevents default post req, which would prevent fetch/ submit
 
         let searchedCity = document.getElementById('citySearch').value
 
@@ -128,3 +126,4 @@ document.addEventListener('DOMContentLoaded', () => {
          }) 
         
     }  
+ 
