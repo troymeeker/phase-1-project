@@ -26,6 +26,10 @@ body{
     display: flex;
     justify-content: center;
     font-size: 30px;
+    
+}
+.title:hover{
+    color: rgb(26, 65, 34);
 }
 #cityForm{
     display: flex;
@@ -49,6 +53,9 @@ body{
     justify-content: space-evenly;
 
 
+}
+.beer-item:hover{
+    opacity: 65%;
 }
 #all-Breweries{
     background-color: rgb(236, 192, 154);
