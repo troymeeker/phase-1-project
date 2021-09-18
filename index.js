@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
      const handleNextPage = () => {  
        pageNum+=1
+       
        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}&per_page=50`)
        .then(resp => resp.json())
        .then(breweries => {
