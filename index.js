@@ -6,6 +6,8 @@ const collection = document.querySelector('#all-Breweries')
 const nextSearchPage = document.querySelector('#moreSearched')
 const getShowAll = document.querySelector('#toggleList')
 let submit = document.querySelector('#cityForm')
+ let likeToggle = document.getElementById('toggleLike')
+   likeToggle.innerHTML = "I Like Beer."
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,8 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
    
    nextSearchPage.innerHTML = ` More Breweries in this city`
   
-   
+  
+   likeToggle.addEventListener('click' , liker)
 })
+
+const liker = () => {
+  if(likeToggle.innerHTML==="I Like Beer."){
+    likeToggle.innerHTML = "I Really Like Beer!"
+  }else{
+    likeToggle.innerHTML = "I Like Beer."
+  }
+}
+
+
             
     const getBrews = () => {
         fetch(baseUrl) 
@@ -35,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             collection.innerHTML = `Page ${pageNum}` 
            
             breweries.forEach((element) => {   
-             collection.append(renderBrewery(element), document.createElement('hr'))
+             collection.append(renderBrewery(element),document.createElement('hr'))
             })
         })
         }    
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
      const handleNextPage = () => {  
        pageNum+=1
-       
+
        fetch(`https://api.openbrewerydb.org/breweries?by_state=oregon&page=${pageNum}&per_page=50`)
        .then(resp => resp.json())
        .then(breweries => {

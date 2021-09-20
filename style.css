@@ -12,7 +12,7 @@ body{
  width: 100vw;
  display: flex;
  flex-direction: row;
- 
+
 }
 #initial-list{
     background-color: rgb(133, 73, 63);
@@ -106,3 +106,8 @@ body{
    
 }
 
+#toggleLike{
+    position: relative;
+    left:47%;
+    background-color: burlywood;
+}
