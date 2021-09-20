@@ -6,8 +6,9 @@ const collection = document.querySelector('#all-Breweries')
 const nextSearchPage = document.querySelector('#moreSearched')
 const getShowAll = document.querySelector('#toggleList')
 let submit = document.querySelector('#cityForm')
- let likeToggle = document.getElementById('toggleLike')
-   likeToggle.innerHTML = "I Like Beer."
+let likeToggle = document.getElementById('toggleLike')
+likeToggle.innerHTML = "I Like Beer."
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,9 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
    
    nextSearchPage.innerHTML = ` More Breweries in this city`
   
-  
    likeToggle.addEventListener('click' , liker)
+
+   
+   
+
 })
+
+
 
 const liker = () => {
   if(likeToggle.innerHTML==="I Like Beer."){
